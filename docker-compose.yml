@@ -23,7 +23,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      # Указываем базовый URL, по которому будет доступен Nextcloud
       OVERWRITECLIURL: "http://localhost:8080"
+      # Добавляем доверенные домены (если Nextcloud будет доступен по localhost)
+      NEXTCLOUD_TRUSTED_DOMAINS: "localhost"
     volumes:
       - nextcloud_data:/var/www/html
 
@@ -39,7 +42,10 @@ services:
     environment:
       JWT_ENABLED: "true"
       JWT_SECRET: "${JWT_SECRET}"
+      # Разрешаем доступ к внутренним IP для OnlyOffice (отключаем блокировку приватных адресов)
       DOC_SERV_DISABLE_PRIVATE_IP_CHECK: "true"
+      # (Опционально) Разрешаем подключение к хранилищу без проверки сертификата
+      USE_UNAUTHORIZED_STORAGE: "true"
 
 volumes:
   db_data:
