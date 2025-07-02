@@ -1,40 +1,45 @@
-version: '3.8'
+version: "3.8"
+
 services:
   db:
     image: mariadb:10.5
     restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: example_root_pass
-      MYSQL_DATABASE: nextcloud
-      MYSQL_USER: nc_user
-      MYSQL_PASSWORD: nc_pass
+    env_file:
+      - .env
     volumes:
       - db_data:/var/lib/mysql
 
   nextcloud:
     image: nextcloud:latest
+    restart: unless-stopped
+    env_file:
+      - .env
     depends_on:
       - db
     ports:
       - "8080:80"
-    restart: unless-stopped
     environment:
       MYSQL_HOST: db
-      MYSQL_DATABASE: nextcloud
-      MYSQL_USER: nc_user
-      MYSQL_PASSWORD: nc_pass
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      OVERWRITECLIURL: "http://localhost:8080"
     volumes:
       - nextcloud_data:/var/www/html
 
   onlyoffice:
     image: onlyoffice/documentserver:latest
+    restart: unless-stopped
+    env_file:
+      - .env
     depends_on:
       - nextcloud
     ports:
       - "8081:80"
-    restart: unless-stopped
     environment:
-      JWT_ENABLED: "false"
+      JWT_ENABLED: "true"
+      JWT_SECRET: "${JWT_SECRET}"
+      DOC_SERV_DISABLE_PRIVATE_IP_CHECK: "true"
 
 volumes:
   db_data:
