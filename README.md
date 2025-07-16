@@ -51,23 +51,6 @@ cd pes-digital-space-mvp
 
 Отредактируйте файл `.env` под свои потребности:
 
-```env
-# PostgreSQL
-POSTGRES_DB=nextcloud
-POSTGRES_USER=nc_user
-POSTGRES_PASSWORD=nc_pass
-
-# OnlyOffice JWT
-ONLYOFFICE_JWT_ENABLED=true
-ONLYOFFICE_JWT_SECRET=supersecret123
-ONLYOFFICE_DOC_SECRET=supersecret123
-
-# Nextcloud ADMIN
-NEXTCLOUD_ADMIN_USER=admin
-NEXTCLOUD_ADMIN_PASSWORD=ChangeMe123!
-NEXTCLOUD_TRUSTED_DOMAINS=localhost
-```
-
 ### 3. Запуск через скрипт
 
 ```bash
@@ -102,10 +85,10 @@ docker-compose up -d
 
 Полная документация доступна в каталоге [`docs/`](https://chatgpt.com/g/g-p-6863078c7a1c8191b67ac674d71f72ff-mvp-tsifrovogo-prostranstva-pes-na-baze-docker/c/docs):
 
-* [Инструкция по установке](https://chatgpt.com/g/g-p-6863078c7a1c8191b67ac674d71f72ff-mvp-tsifrovogo-prostranstva-pes-na-baze-docker/c/docs/Installation.md)
-* [Архитектура и взаимодействие сервисов](https://chatgpt.com/g/g-p-6863078c7a1c8191b67ac674d71f72ff-mvp-tsifrovogo-prostranstva-pes-na-baze-docker/c/docs/Architecture.md)
-* [Использование системы](https://chatgpt.com/g/g-p-6863078c7a1c8191b67ac674d71f72ff-mvp-tsifrovogo-prostranstva-pes-na-baze-docker/c/docs/Usage.md)
-* [Планы расширения проекта](https://chatgpt.com/g/g-p-6863078c7a1c8191b67ac674d71f72ff-mvp-tsifrovogo-prostranstva-pes-na-baze-docker/c/docs/Expansion.md)
+1. Архитектура и взаимодействие сервисов
+2. Инструкция по установке
+3. Использование сервисов
+4. Планы расширения проекта
 
 ---
 
